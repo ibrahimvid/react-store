@@ -1,5 +1,3 @@
-/* Used as starting data for ShopPage */
-
 const SHOP_DATA = [
   {
     id: 1,
@@ -198,7 +196,7 @@ const SHOP_DATA = [
       {
         id: 29,
         name: 'White Blouse',
-        imageUrl: 'https://i.ibb.co/qBcrsJg/white-vest.png',       
+        imageUrl: 'https://i.ibb.co/qBcrsJg/white-vest.png',
         price: 20
       }
     ]
