@@ -1,29 +1,22 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { selectDirectorySections } from '../../redux/directory/directory.selectors';
+import { createStructuredSelector } from 'reselect';
+
 import MenuItem from "../menu-item/menu-item.component";
 
-import SECTIONS_DATA from './sections.data';
 import "./directory.styles.scss";
 
-// Needs to be class component, because we need to store the state value of those menu items that we need to pass to create menu items
+const Directory = ({ sections }) => (
+  <div className="directory-menu">
+    {sections.map(({ id, ...otherSectionProps }) => (
+      <MenuItem key={id} {...otherSectionProps} />
+    ))}
+  </div>
+);
 
-class Directory extends React.Component {
-  constructor() {
-    super();
+const mapStateToProps = createStructuredSelector({
+  sections: selectDirectorySections
+})
 
-    this.state = {
-      sections: SECTIONS_DATA
-    }
-  }
-
-  render() {
-    return (
-      <div className="directory-menu">
-        {this.state.sections.map(({ id, ...otherSectionProps }) => (
-          <MenuItem key={id} {...otherSectionProps} />
-        ))}
-      </div>
-    );
-  }
-}
-
-export default Directory;
+export default connect(mapStateToProps)(Directory);
